@@ -4,11 +4,12 @@ import "./globals.css";
 
 import {
   ThirdwebProvider,
- 
-  phantomWallet,
+  metamaskWallet,
+  coinbaseWallet,
+  walletConnect,
+  embeddedWallet,
 
 } from "@thirdweb-dev/react";
-import Nav from "@/components/common/Nav";
 import { ProposalProvider } from "@/ContextProviders/ProposalProvider";
 import { SnackbarProvider, closeSnackbar } from "notistack";
 import { IoClose } from "react-icons/io5";
@@ -26,8 +27,10 @@ export default function RootLayout({
           activeChain="mumbai"
           clientId="5be238b6d90aced04e9db46730f231da"
           supportedWallets={[
-           
-            phantomWallet(),
+            metamaskWallet(),
+            coinbaseWallet({ recommended: true }),
+            walletConnect(),
+            embeddedWallet(),
           ]}
         >
           <SnackbarProvider
